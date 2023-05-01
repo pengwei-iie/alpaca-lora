@@ -16,6 +16,11 @@ as well as Tim Dettmers' [bitsandbytes](https://github.com/TimDettmers/bitsandby
 
 Without hyperparameter tuning, the LoRA model produces outputs comparable to the Stanford Alpaca model. (Please see the outputs included below.) Further tuning might be able to achieve better performance; I invite interested users to give it a try and report their results.
 
+### 跑到200 steps就 OOM 醉了真是
+
+upgrading transformers to the dev version pip install git+https://github.com/huggingface/transformers seems to have resolved it.
+bitsandbytes==0.37.2 also works
+
 ### Local Setup
 
 1. Install dependencies
