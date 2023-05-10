@@ -112,12 +112,12 @@ def train(
     model = LlamaForCausalLM.from_pretrained(
         base_model,
         load_in_8bit=True,
-        cache_dir='/hy-tmp/LLa_7B_bin/',
+        # cache_dir='/hy-tmp/LLa_7B_bin/', load local can be missed
         torch_dtype=torch.float16,
         device_map=device_map,
     )
 
-    tokenizer = LlamaTokenizer.from_pretrained(base_model, cache_dir='/hy-tmp/LLa_7B_bin/',)
+    tokenizer = LlamaTokenizer.from_pretrained(base_model) # (load local can be missed) cache_dir='/hy-tmp/LLa_7B_bin/',)
 
     tokenizer.pad_token_id = (
         0  # unk. we want this to be different from the eos token
