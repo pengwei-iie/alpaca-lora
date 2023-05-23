@@ -21,6 +21,10 @@ Without hyperparameter tuning, the LoRA model produces outputs comparable to the
 upgrading transformers to the dev version pip install git+https://github.com/huggingface/transformers seems to have resolved it.
 bitsandbytes==0.37.2 also works
 
+### LLaMa
+
+https://huggingface.co/decapoda-research/llama-7b-hf/tree/main
+
 ### Local Setup
 
 1. Install dependencies
