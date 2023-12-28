@@ -39,14 +39,14 @@ def train(
     val_set_size: int = 2000,
     # lora hyperparams
     lora_r: int = 8,
-    lora_alpha: int = 16,
+    lora_alpha: int = 16,    # LoRA正则化的权重系数。调大这个值会增加LoRA正则化的强度,使得不同模块(比如query和key)之间的表示更加相似。
     lora_dropout: float = 0.05,
     lora_target_modules: List[str] = [
         "q_proj",
         "v_proj",
-    ],
+    ],    # 模块名的列表,指定了哪些模块需要进行LoRA正则化
     # llm hyperparams
-    train_on_inputs: bool = True,  # if False, masks out inputs in loss
+    train_on_inputs: bool = False,  # if False, masks out inputs in loss
     add_eos_token: bool = False,
     group_by_length: bool = False,  # faster, but produces an odd training loss curve
     # wandb params
@@ -100,7 +100,7 @@ def train(
     # Check if parameter passed or if set within environ
     use_wandb = len(wandb_project) > 0 or (
         "WANDB_PROJECT" in os.environ and len(os.environ["WANDB_PROJECT"]) > 0
-    )
+    )    # use_wandb是判断是否要使用wandb进行训练过程可视化和监控
     # Only overwrite environ if wandb param passed
     if len(wandb_project) > 0:
         os.environ["WANDB_PROJECT"] = wandb_project
@@ -171,7 +171,7 @@ def train(
                 user_prompt_len:
             ]  # could be sped up, probably
         return tokenized_full_prompt
-
+    # 对模型进行8比特量化(prepare_model_for_int8_training)。
     model = prepare_model_for_int8_training(model)
 
     config = LoraConfig(
@@ -281,4 +281,4 @@ def train(
 
 
 if __name__ == "__main__":
-    fire.Fire(train)
+    fire.Fire(train)    # fire库可以自动将命令行的参数解析成Python函数的参数
