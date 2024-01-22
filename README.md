@@ -43,6 +43,11 @@ delete the codes
 
 ![image](https://github.com/pengwei-iie/alpaca-lora/assets/30322673/f892e7d2-2026-40e7-ad66-38023dd3f19a)
 
+### DONE! 
+
+
+![image](https://github.com/pengwei-iie/alpaca-lora/assets/30322673/9d5b0536-823b-4fde-8237-b67e5f7d72a4)
+
 
 ### LLaMa
 
