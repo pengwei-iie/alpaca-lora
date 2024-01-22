@@ -21,6 +21,29 @@ Without hyperparameter tuning, the LoRA model produces outputs comparable to the
 upgrading transformers to the dev version pip install git+https://github.com/huggingface/transformers seems to have resolved it.
 bitsandbytes==0.37.2 also works
 
+### bug 1 during infer
+
+could not create share link.
+
+![image](https://github.com/pengwei-iie/alpaca-lora/assets/30322673/27316d8f-39f9-47fb-9ffb-40f73bd99309)
+
+then: chmod -R 777 frpc_linux_amd64_v0.2
+
+### bug 2 during infer 
+
+AttributeError: module 'gradio' has no attribute 'inputs'
+
+delete inputs directly
+
+### bug 3 during fine-tune
+
+safetensors_rust.SafetensorError: Error while deserializing header: InvalidHeaderDeserialization
+
+delete the codes 
+
+![image](https://github.com/pengwei-iie/alpaca-lora/assets/30322673/f892e7d2-2026-40e7-ad66-38023dd3f19a)
+
+
 ### LLaMa
 
 https://huggingface.co/decapoda-research/llama-7b-hf/tree/main
