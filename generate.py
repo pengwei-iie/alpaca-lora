@@ -29,7 +29,7 @@ def main(
     lora_weights: str = "tloen/alpaca-lora-7b",
     prompt_template: str = "",  # The prompt template to use, will default to alpaca.
     server_name: str = "0.0.0.0",  # Allows to listen on all interfaces by providing '0.
-    share_gradio: bool = False,
+    share_gradio: bool = True,
 ):
     base_model = base_model or os.environ.get("BASE_MODEL", "")
     assert (
@@ -81,8 +81,8 @@ def main(
         model.half()  # seems to fix bugs for some users.
 
     model.eval()
-    if torch.__version__ >= "2" and sys.platform != "win32":
-        model = torch.compile(model)
+    # if torch.__version__ >= "2" and sys.platform != "win32":
+    #     model = torch.compile(model)
 
     def evaluate(
         instruction,
@@ -185,7 +185,7 @@ def main(
             gr.components.Checkbox(label="Stream output"),
         ],
         outputs=[
-            gr.inputs.Textbox(
+            gr.Textbox(
                 lines=5,
                 label="Output",
             )

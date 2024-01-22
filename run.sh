@@ -1,6 +1,6 @@
-nohup python finetune.py \
-    --base_model './path_to_llama-7b-hf' \
+python finetune.py \
+    --base_model '../llama-7b' \
     --data_path './alpaca_data_cleaned_archive.json' \
-    --batch_size '32' \
-    --micro_batch_size '32' \
-    --output_dir './lora-alpaca' > train_fine.out 2>&1 &
+    --batch_size '8' \
+    --micro_batch_size '8' \
+    --output_dir './lora-alpaca'
